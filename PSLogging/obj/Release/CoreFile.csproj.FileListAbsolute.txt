@@ -1,0 +1,4 @@
+C:\Users\A4938.PAD01\Documents\Visual Studio 2010\Projects\svn\PSLogging\PSLogging\bin\Release\CoreFile.dll
+C:\Users\A4938.PAD01\Documents\Visual Studio 2010\Projects\svn\PSLogging\PSLogging\bin\Release\CoreFile.pdb
+C:\Users\A4938.PAD01\Documents\Visual Studio 2010\Projects\svn\PSLogging\PSLogging\obj\Release\CoreFile.dll
+C:\Users\A4938.PAD01\Documents\Visual Studio 2010\Projects\svn\PSLogging\PSLogging\obj\Release\CoreFile.pdb
