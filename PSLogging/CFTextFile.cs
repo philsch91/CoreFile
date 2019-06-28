@@ -13,23 +13,6 @@ namespace CoreFile {
         protected readonly Object syncObject;   //static
         protected string path = null;
         protected bool disposed = false;
-        /*
-        private bool overwrite = false;
-        
-        public bool Overwrite {
-            get { return this.overwrite; }
-            set {
-                if(value) {
-                    this.textWriter.Dispose();
-                    //this.textWriter = TextWriter.Synchronized(new StreamWriter(this.path, false));
-                    //this.textWriter = TextWriter.Synchronized(File.CreateText(this.path));
-                    this.textWriter = new StreamWriter(this.path, false);
-                } else {
-                    this.textWriter.Dispose();
-                    this.textWriter = TextWriter.Synchronized(File.AppendText(this.path));
-                }
-            }
-        }*/
 
         public bool Append {
             set {
@@ -62,31 +45,6 @@ namespace CoreFile {
             this.textWriter = TextWriter.Synchronized(new StreamWriter(this.fileStream));
             this.textReader = TextReader.Synchronized(new StreamReader(this.fileStream));
         }
-        /*
-        public Textfile(string path, bool overwrite) {
-            if(path.Contains("\\")) {
-                string directory = path.Substring(0, path.LastIndexOf("\\"));
-                if(!Directory.Exists(directory)) {
-                    Directory.CreateDirectory(directory);
-                }
-            }
-
-            this.path = path;
-            this.syncObject = new Object();
-
-            this.fileStream = new FileStream(this.path,FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.ReadWrite);
-
-            if(overwrite) {
-                //this.textWriter = new StreamWriter(this.path, false);
-                //this.textWriter = new StreamWriter(fileStream);
-                this.textWriter = TextWriter.Synchronized(new StreamWriter(this.fileStream));
-            } else {
-                this.textWriter = TextWriter.Synchronized(File.AppendText(this.path));
-                
-            }
-            //this.textReader = TextReader.Synchronized(File.OpenText(this.path));
-            this.textReader = TextReader.Synchronized(new StreamReader(this.fileStream));
-        }*/
 
         public virtual void Write(string message) {
             lock(syncObject) {
@@ -116,9 +74,8 @@ namespace CoreFile {
             }
         }
 
-        public virtual String ReadToEnd() {
+        public virtual string ReadToEnd() {
             lock(syncObject) {
-                //this.textWriter.Close();
                 //return File.ReadAllText(this.path);
                 return this.textReader.ReadToEnd();
             }
